@@ -48,30 +48,35 @@ const Services = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
+  const getCardVariants = (index) => ({
+    hidden: { 
+      opacity: 0, 
+      y: 80,
+      scale: 0.9,
     },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.5,
+        type: "spring",
+        stiffness: 50,
+        damping: 18,
+        mass: 1,
+        delay: (index % 3) * 0.15, // Stagger based on column position
       },
     },
-  };
+  });
 
   return (
-    <section className="py-20 md:py-28 relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+    <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-40 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -93,18 +98,15 @@ const Services = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {services.map((service) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
             <motion.div
               key={service.id}
-              variants={itemVariants}
-              className="group glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer"
+              variants={getCardVariants(index)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="group glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10"
             >
               {/* Icon */}
               <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
@@ -135,7 +137,7 @@ const Services = () => {
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
         <motion.div
