@@ -76,7 +76,7 @@ const Blogs = () => {
     if (isAutoPlay) {
       const interval = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 3000);
       return () => clearInterval(interval);
     }
   }, [currentIndex, isAutoPlay]);
@@ -107,8 +107,8 @@ const Blogs = () => {
     enter: (direction) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
-      scale: 0.8,
-      rotateY: direction > 0 ? 45 : -45,
+      scale: 0.9,
+      rotateY: direction > 0 ? 25 : -25,
     }),
     center: {
       zIndex: 1,
@@ -121,8 +121,8 @@ const Blogs = () => {
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
-      scale: 0.8,
-      rotateY: direction < 0 ? 45 : -45,
+      scale: 0.9,
+      rotateY: direction < 0 ? 25 : -25,
     }),
   };
 
@@ -195,7 +195,7 @@ const Blogs = () => {
             onMouseEnter={() => setIsAutoPlay(false)}
             onMouseLeave={() => setIsAutoPlay(true)}
           >
-            <AnimatePresence initial={false} custom={direction} mode="wait">
+            <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
                 custom={direction}
@@ -204,10 +204,10 @@ const Blogs = () => {
                 animate="center"
                 exit="exit"
                 transition={{
-                  x: { type: "spring", stiffness: 300, damping: 30 },
-                  opacity: { duration: 0.3 },
-                  scale: { duration: 0.3 },
-                  rotateY: { duration: 0.5 },
+                  x: { type: "spring", stiffness: 260, damping: 26 },
+                  opacity: { duration: 0.2 },
+                  scale: { duration: 0.4, ease: "easeInOut" },
+                  rotateY: { duration: 0.4, ease: "easeInOut" },
                 }}
                 className="absolute w-full max-w-4xl px-4"
               >
