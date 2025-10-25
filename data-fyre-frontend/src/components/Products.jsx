@@ -43,25 +43,37 @@ const Products = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.95,
+    },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.7,
+        ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smooth effect
       },
     },
   };
 
   return (
-    <section className="py-20 md:py-28 relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+    <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -82,49 +94,61 @@ const Products = () => {
           </p>
         </motion.div>
 
-        {/* Products Grid */}
+        {/* Products List */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-6 max-w-4xl mx-auto"
         >
-          {products.map((product) => (
+          {products.map((product, index) => (
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              className={`glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10 ${
+                index % 2 === 1 ? 'lg:ml-[30%]' : 'lg:mr-auto'
+              }`}
+              style={{ maxWidth: '70%' }}
             >
-              {/* Icon */}
-              <div className={`w-16 h-16 bg-gradient-to-br ${product.color} rounded-xl flex items-center justify-center text-3xl mb-6 shadow-lg`}>
-                {product.icon}
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                {/* Content Side */}
+                <div className="lg:col-span-9 p-4 md:p-5 flex flex-col justify-center">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-2">{product.title}</h3>
+                  <p className="text-gray-400 mb-2.5 leading-relaxed text-sm">{product.description}</p>
 
-              {/* Content */}
-              <h3 className="text-2xl font-bold text-white mb-3">{product.title}</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">{product.description}</p>
+                  {/* Features */}
+                  <div className="flex flex-wrap gap-1.5 mb-2.5">
+                    {product.features.map((feature, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-accent/10 text-accent px-2 py-0.5 rounded-full text-xs font-medium border border-accent/30"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
 
-              {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {product.features.map((feature, index) => (
-                  <span
-                    key={index}
-                    className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium border border-accent/30"
+                  {/* CTA */}
+                  <Link
+                    to="/products"
+                    className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300 text-xs"
                   >
-                    {feature}
-                  </span>
-                ))}
-              </div>
+                    Learn More
+                    <span className="text-sm">→</span>
+                  </Link>
+                </div>
 
-              {/* CTA */}
-              <Link
-                to="/products"
-                className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300"
-              >
-                Learn More
-                <span className="text-xl">→</span>
-              </Link>
+                {/* Icon Side */}
+                <div className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center`}>
+                  <div className="text-4xl opacity-90">
+                    {product.icon}
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>

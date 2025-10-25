@@ -89,8 +89,14 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 md:py-28 relative">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+      <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
           <div className="space-y-12">
             {products.map((product, index) => (
               <motion.div
@@ -99,7 +105,7 @@ const ProductsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift"
+                className="glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift backdrop-blur-xl bg-gray-900/40 border border-white/10"
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-${index % 2 === 0 ? '2' : '2'} gap-8`}>
                   <div className={`p-8 md:p-12 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
