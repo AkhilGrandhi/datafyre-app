@@ -223,14 +223,14 @@ const Blogs = () => {
               } else if (isLeftOne || isRightOne) {
                 xOffset = isLeftOne ? -100: 100;
                 scale = 1;
-                opacity = 0.6;
+                opacity = 1; // Full opacity for back cards
                 zIndex = 20;
                 rotateY = isLeftOne ? 12 : -12;
                 cardHeight = '400px'; // Adjacent cards - ORIGINAL
               } else if (isLeftTwo || isRightTwo) {
                 xOffset = isLeftTwo ? -190 : 190;
                 scale = 1;
-                opacity = 0.3;
+                opacity = 1; // Full opacity for back cards
                 zIndex = 10;
                 rotateY = isLeftTwo ? 20 : -20;
                 cardHeight = '320px'; // Outer cards - ORIGINAL
