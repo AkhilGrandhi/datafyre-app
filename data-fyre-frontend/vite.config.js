@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.mp4'],
+  assetsInclude: ['**/*.mp4', '**/*.PNG'],
   build: {
     assetsInlineLimit: 0, // Don't inline any assets, copy all to dist
     rollupOptions: {

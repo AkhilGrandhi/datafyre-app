@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import whiteLogo from '../assets/white_logo.PNG';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,9 +35,11 @@ const Header = () => {
       <nav className="container-custom flex items-center justify-between px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center border border-accent/30">
-            <span className="text-white font-bold text-xl">DF</span>
-          </div>
+          <img 
+            src={whiteLogo} 
+            alt="Data Fyre Logo" 
+            className="h-10 w-auto object-contain border-2 border-white rounded-lg p-1"
+          />
           <span className="font-bold text-xl text-white">
             Data Fyre
           </span>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import whiteLogo from '../assets/white_trans_logo.PNG';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,9 +40,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">DF</span>
-              </div>
+              <img 
+                src={whiteLogo} 
+                alt="Data Fyre Logo" 
+                className="h-10 w-auto object-contain"
+              />
               <span className="font-bold text-xl">Data Fyre</span>
             </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
