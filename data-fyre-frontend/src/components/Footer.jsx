@@ -34,7 +34,7 @@ const Footer = () => {
 
   return (
     <footer className="gradient-dark text-white">
-      <div className="container-custom px-4 md:px-8 py-12 md:py-16">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Company Info */}
           <div className="lg:col-span-2">

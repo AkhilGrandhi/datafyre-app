@@ -56,8 +56,8 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="section-padding relative">
-      <div className="container-custom">
+    <section className="py-20 md:py-28 relative">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

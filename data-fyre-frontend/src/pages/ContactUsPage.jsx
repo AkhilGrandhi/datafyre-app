@@ -3,7 +3,7 @@ import ContactUs from '../components/ContactUs';
 
 const ContactUsPage = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-28">
       <ContactUs />
     </div>
   );

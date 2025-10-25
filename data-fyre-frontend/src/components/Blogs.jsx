@@ -88,8 +88,8 @@ const Blogs = () => {
   };
 
   return (
-    <section className="section-padding relative">
-      <div className="container-custom">
+    <section className="py-20 md:py-28 relative">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -131,7 +131,7 @@ const Blogs = () => {
 
               {/* Content */}
               <div className="p-6">
-                <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-accent/30">
                   {blog.category}
                 </span>
 

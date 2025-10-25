@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-header border-b border-primary/20 glow-effect py-4' : 'bg-transparent py-6'
+        isScrolled ? 'glass-header py-4' : 'bg-transparent py-6'
       }`}
     >
       <nav className="container-custom flex items-center justify-between px-4 md:px-8">
@@ -93,7 +93,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden glass-header border-b border-primary/20 overflow-hidden transition-all duration-300 ${
+        className={`md:hidden glass-header overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

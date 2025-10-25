@@ -69,8 +69,8 @@ const ProductsPage = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="gradient-dark text-white pt-32 pb-20">
-        <div className="container-custom px-4 md:px-8">
+      <section className="gradient-dark text-white pt-40 pb-20">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -89,8 +89,8 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="section-padding relative">
-        <div className="container-custom">
+      <section className="py-20 md:py-28 relative">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
           <div className="space-y-12">
             {products.map((product, index) => (
               <motion.div

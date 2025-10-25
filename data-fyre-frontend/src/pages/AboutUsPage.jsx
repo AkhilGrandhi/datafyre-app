@@ -3,7 +3,7 @@ import AboutUs from '../components/AboutUs';
 
 const AboutUsPage = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-28">
       <AboutUs />
     </div>
   );

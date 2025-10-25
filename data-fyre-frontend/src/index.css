@@ -16,6 +16,8 @@ body {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   background-attachment: fixed;
   color: #ffffff;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 html {
@@ -90,22 +92,27 @@ html {
   }
 }
 
-/* Custom Scrollbar - Glass Theme */
+/* Hide Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(26, 26, 26, 0.5);
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #e54ed0 0%, #9f45b0 100%);
-  border-radius: 5px;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #9f45b0 0%, #44008b 100%);
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
 }
 
 /* Selection */
