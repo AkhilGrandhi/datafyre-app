@@ -98,7 +98,7 @@ const Services = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: "1000px" }}>
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -106,10 +106,17 @@ const Services = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
-              className="group glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10"
+              whileHover={{ 
+                scale: 1.05,
+                rotateY: 5,
+                rotateX: 5,
+                transition: { duration: 0.3 }
+              }}
+              className="group glass-card rounded-2xl p-8 cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(229,78,208,0.3)] transition-all duration-300"
+              style={{ transformStyle: "preserve-3d" }}
             >
               {/* Icon */}
-              <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="text-5xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 {service.icon}
               </div>
 
