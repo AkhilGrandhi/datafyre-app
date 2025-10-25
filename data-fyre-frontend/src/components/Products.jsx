@@ -112,34 +112,65 @@ const Products = () => {
                 key={product.id}
                 variants={cardVariants}
                 whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.3, ease: "easeOut" }
+                  y: -10,
+                  transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }
                 }}
-                className={`group glass-card rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 w-full ${
+                className={`group glass-card rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-500 w-full ${
                   isRightAligned ? 'lg:ml-[35%] lg:max-w-[65%]' : 'lg:mr-auto lg:max-w-[65%]'
                 }`}
               >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 relative overflow-hidden">
+                {/* Shimmer Effect on Hover */}
+                <motion.div 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none"
+                  initial={{ x: '-100%', opacity: 0 }}
+                  whileHover={{ 
+                    x: '100%', 
+                    opacity: 1,
+                    transition: { duration: 0.8, ease: "easeInOut" }
+                  }}
+                />
                 {/* Icon Side */}
                 <motion.div 
-                  className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-8 sm:p-10 lg:p-4 flex items-center justify-center ${
+                  className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-8 sm:p-10 lg:p-4 flex items-center justify-center relative ${
                     index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
                   }`}
                 >
+                  {/* Animated Background Glow */}
                   <motion.div 
-                    className="text-5xl sm:text-6xl lg:text-4xl opacity-90"
-                    whileHover={{ 
-                      scale: 1.15,
-                      rotate: 5,
-                      transition: { duration: 0.3, ease: "easeOut" }
-                    }}
+                    className="absolute inset-0 bg-white/5"
                     animate={{ 
-                      y: [0, -5, 0],
+                      opacity: [0.05, 0.15, 0.05],
                     }}
                     transition={{ 
-                      duration: 3,
+                      duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut"
+                    }}
+                  />
+                  
+                  <motion.div 
+                    className="text-5xl sm:text-6xl lg:text-4xl opacity-90 relative z-10"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ 
+                      scale: 1, 
+                      opacity: 0.9,
+                      transition: { delay: 0.2, duration: 0.5, ease: "easeOut" }
+                    }}
+                    whileHover={{ 
+                      scale: 1.2,
+                      rotate: [0, -10, 10, 0],
+                      transition: { duration: 0.6, ease: "easeInOut" }
+                    }}
+                    animate={{ 
+                      y: [0, -8, 0],
+                    }}
+                    transition={{ 
+                      y: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
                     }}
                   >
                     {product.icon}
@@ -150,37 +181,87 @@ const Products = () => {
                 <div className={`lg:col-span-9 p-6 sm:p-8 lg:p-5 flex flex-col justify-center ${
                   index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
                 }`}>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3">
+                  <motion.h3 
+                    className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
+                  >
                     {product.title}
-                  </h3>
-                  <p className="text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
+                  </motion.h3>
+                  
+                  <motion.p 
+                    className="text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+                  >
                     {product.description}
-                  </p>
+                  </motion.p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <motion.div 
+                    className="flex flex-wrap gap-2 mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
+                  >
                     {product.features.map((feature, idx) => (
-                      <span
+                      <motion.span
                         key={idx}
-                        className="bg-accent/10 text-accent px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium border border-accent/30 hover:bg-accent/20 transition-colors duration-200"
+                        className="bg-accent/10 text-accent px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium border border-accent/30 hover:bg-accent/20 hover:scale-105 transition-all duration-300"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ 
+                          delay: 0.4 + (idx * 0.1), 
+                          duration: 0.4, 
+                          ease: [0.34, 1.56, 0.64, 1]
+                        }}
+                        whileHover={{ 
+                          y: -3,
+                          transition: { duration: 0.2 }
+                        }}
                       >
                         {feature}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
 
                   {/* CTA */}
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
+                  >
                     <Link
                       to="/products"
-                      className="inline-flex items-center text-accent text-sm sm:text-base font-semibold hover:gap-3 gap-2 transition-all duration-300 group"
+                      className="inline-flex items-center text-accent text-sm sm:text-base font-semibold gap-2 group relative"
                     >
-                      Learn More
-                      <span className="text-sm group-hover:translate-x-1 transition-transform duration-300">
-                        →
+                      <span className="relative">
+                        Learn More
+                        <motion.span 
+                          className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"
+                        />
                       </span>
+                      <motion.span 
+                        className="text-sm"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ 
+                          duration: 1.5, 
+                          repeat: Infinity, 
+                          repeatDelay: 2,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        →
+                      </motion.span>
                     </Link>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -193,15 +274,35 @@ const Products = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mt-12"
         >
-          <Link
-            to="/products"
-            className="gradient-primary text-white px-8 py-4 rounded-lg font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
-            View All Products
-          </Link>
+            <Link
+              to="/products"
+              className="gradient-primary text-white px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-3 group relative overflow-hidden"
+            >
+              <span className="relative z-10">View All Products</span>
+              <motion.span
+                className="relative z-10"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity, 
+                  repeatDelay: 1,
+                  ease: "easeInOut"
+                }}
+              >
+                →
+              </motion.span>
+              {/* Hover Glow Effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></span>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>
