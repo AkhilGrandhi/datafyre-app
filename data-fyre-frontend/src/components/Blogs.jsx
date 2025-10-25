@@ -257,7 +257,7 @@ const Blogs = () => {
                 >
                 <motion.article
                   whileHover={{ scale: 1.02, y: -10 }}
-                  className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/95 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
+                  className="rounded-3xl overflow-hidden cursor-pointer group bg-gray-800 border border-gray-700 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
                   style={{ height: cardHeight }}
                 >
                   <div className="grid md:grid-cols-2 gap-0 h-full">
