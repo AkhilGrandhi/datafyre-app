@@ -96,11 +96,13 @@ const Blogs = () => {
     setCurrentIndex(index);
   };
 
-  // Get visible cards (current and two adjacent)
+  // Get visible cards (current, two left, and two right)
   const getVisibleCards = () => {
-    const prev = (currentIndex - 1 + blogs.length) % blogs.length;
-    const next = (currentIndex + 1) % blogs.length;
-    return [prev, currentIndex, next];
+    const leftTwo = (currentIndex - 2 + blogs.length) % blogs.length;
+    const leftOne = (currentIndex - 1 + blogs.length) % blogs.length;
+    const rightOne = (currentIndex + 1) % blogs.length;
+    const rightTwo = (currentIndex + 2) % blogs.length;
+    return [leftTwo, leftOne, currentIndex, rightOne, rightTwo];
   };
 
   const slideVariants = {
@@ -188,29 +190,79 @@ const Blogs = () => {
           </motion.p>
         </div>
 
-        {/* Featured Carousel - Large Center Card */}
+        {/* Featured Carousel - Stacked Cards */}
         <div className="mb-12">
           <div 
-            className="relative h-[550px] flex items-center justify-center overflow-hidden"
+            className="relative h-[550px] flex items-center justify-center overflow-visible"
             onMouseEnter={() => setIsAutoPlay(false)}
             onMouseLeave={() => setIsAutoPlay(true)}
           >
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 260, damping: 26 },
-                  opacity: { duration: 0.2 },
-                  scale: { duration: 0.4, ease: "easeInOut" },
-                  rotateY: { duration: 0.4, ease: "easeInOut" },
-                }}
-                className="absolute w-full max-w-4xl px-4"
-              >
+            {/* Render visible cards */}
+            {getVisibleCards().map((blogIndex, position) => {
+              const isCenter = position === 2;
+              const isLeftOne = position === 1;
+              const isLeftTwo = position === 0;
+              const isRightOne = position === 3;
+              const isRightTwo = position === 4;
+              
+              // Calculate position offsets
+              let xOffset = 0;
+              let scale = 1;
+              let opacity = 1;
+              let zIndex = 30;
+              let rotateY = 0;
+              
+              if (isCenter) {
+                xOffset = 0;
+                scale = 1;
+                opacity = 1;
+                zIndex = 30;
+                rotateY = 0;
+              } else if (isLeftOne) {
+                xOffset = -150;
+                scale = 0.85;
+                opacity = 0.6;
+                zIndex = 20;
+                rotateY = 12;
+              } else if (isLeftTwo) {
+                xOffset = -300;
+                scale = 0.7;
+                opacity = 0.3;
+                zIndex = 10;
+                rotateY = 20;
+              } else if (isRightOne) {
+                xOffset = 150;
+                scale = 0.85;
+                opacity = 0.6;
+                zIndex = 20;
+                rotateY = -12;
+              } else if (isRightTwo) {
+                xOffset = 300;
+                scale = 0.7;
+                opacity = 0.3;
+                zIndex = 10;
+                rotateY = -20;
+              }
+              
+              return (
+                <motion.div
+                  key={`${blogIndex}-${currentIndex}`}
+                  initial={false}
+                  animate={{
+                    x: xOffset,
+                    scale: scale,
+                    opacity: opacity,
+                    zIndex: zIndex,
+                    rotateY: rotateY,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 26,
+                  }}
+                  className="absolute w-full max-w-4xl px-4"
+                  style={{ pointerEvents: isCenter ? 'auto' : 'none' }}
+                >
                 <motion.article
                   whileHover={{ scale: 1.02, y: -10 }}
                   className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/60 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
@@ -231,7 +283,7 @@ const Blogs = () => {
                           repeatType: "reverse" 
                         }}
                       >
-                        {blogs[currentIndex].image}
+                        {blogs[blogIndex].image}
                       </motion.span>
                       
                       {/* Floating Particles */}
@@ -267,7 +319,7 @@ const Blogs = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-accent/30 w-fit"
                       >
-                        {blogs[currentIndex].category}
+                        {blogs[blogIndex].category}
                       </motion.span>
 
                       <motion.h3 
@@ -276,7 +328,7 @@ const Blogs = () => {
                         transition={{ delay: 0.3 }}
                         className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-accent transition-colors"
                       >
-                        {blogs[currentIndex].title}
+                        {blogs[blogIndex].title}
                       </motion.h3>
 
                       <motion.p 
@@ -285,7 +337,7 @@ const Blogs = () => {
                         transition={{ delay: 0.4 }}
                         className="text-gray-400 mb-6 leading-relaxed text-lg"
                       >
-                        {blogs[currentIndex].excerpt}
+                        {blogs[blogIndex].excerpt}
                       </motion.p>
 
                       {/* Meta Info */}
@@ -297,14 +349,14 @@ const Blogs = () => {
                       >
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
-                            {blogs[currentIndex].author.charAt(0)}
+                            {blogs[blogIndex].author.charAt(0)}
                           </div>
                           <div>
-                            <p className="text-white font-medium">{blogs[currentIndex].author}</p>
-                            <p className="text-xs text-gray-500">{blogs[currentIndex].date}</p>
+                            <p className="text-white font-medium">{blogs[blogIndex].author}</p>
+                            <p className="text-xs text-gray-500">{blogs[blogIndex].date}</p>
                           </div>
                         </div>
-                        <span className="text-accent font-medium">{blogs[currentIndex].readTime}</span>
+                        <span className="text-accent font-medium">{blogs[blogIndex].readTime}</span>
                       </motion.div>
 
                       <motion.div
@@ -329,12 +381,13 @@ const Blogs = () => {
                   </div>
                 </motion.article>
               </motion.div>
-            </AnimatePresence>
+              );
+            })}
 
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 z-20 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute left-4 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -343,7 +396,7 @@ const Blogs = () => {
             
             <button
               onClick={nextSlide}
-              className="absolute right-4 z-20 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute right-4 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
