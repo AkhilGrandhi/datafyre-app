@@ -367,82 +367,172 @@ const Blogs = () => {
           </div>
         </div>
 
-        {/* All Blogs Grid */}
-        <div className="mt-20">
-          <motion.h3 
+        {/* Customer Reviews - Infinite Scroll */}
+        <div className="mt-20 overflow-hidden">
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold text-white mb-10 text-center"
+            className="text-center mb-12"
           >
-            All Articles
-          </motion.h3>
-          
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogs.map((blog, index) => (
-              <motion.article
-                key={blog.id}
-                custom={index}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                whileHover={{ 
-                  y: -10, 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-                className="glass-card rounded-2xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/40 border border-white/10 hover:border-primary/50 hover:bg-gray-800/50 transition-all duration-300 shadow-xl hover:shadow-primary/20"
-              >
-                {/* Image Placeholder */}
-                <div className="relative h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm group-hover:backdrop-blur-none transition-all duration-300"></div>
-                  <motion.span 
-                    className="relative z-10"
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                  {blog.image}
-                  </motion.span>
-                </div>
+            <span className="text-accent font-semibold text-sm uppercase tracking-wider inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
+              Testimonials
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+              What Our Clients Say
+            </h3>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Trusted by industry leaders worldwide
+            </p>
+          </motion.div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-accent/30">
-                    {blog.category}
-                  </span>
+          {/* Scrolling Reviews Container */}
+          <div className="relative">
+            {/* Gradient Overlays */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                    {blog.title}
-                  </h3>
+            {/* Infinite Scroll Animation */}
+            <motion.div
+              className="flex gap-6"
+              animate={{
+                x: [0, -1920],
+              }}
+              transition={{
+                x: {
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+              }}
+            >
+              {/* First Set of Reviews */}
+              {[
+                {
+                  id: 1,
+                  name: 'Sarah Mitchell',
+                  position: 'CTO, TechVision Inc.',
+                  avatar: 'SM',
+                  review: 'DataFyre transformed our cloud infrastructure completely. Their solutions are innovative, reliable, and exactly what we needed to scale our operations.',
+                  rating: 5,
+                  color: 'from-blue-500 to-cyan-500'
+                },
+                {
+                  id: 2,
+                  name: 'James Rodriguez',
+                  position: 'CEO, NextGen Solutions',
+                  avatar: 'JR',
+                  review: 'Outstanding service and exceptional results. The team at DataFyre truly understands enterprise needs and delivers beyond expectations.',
+                  rating: 5,
+                  color: 'from-purple-500 to-pink-500'
+                },
+                {
+                  id: 3,
+                  name: 'Emily Chen',
+                  position: 'Director of IT, GlobalCorp',
+                  avatar: 'EC',
+                  review: 'Working with DataFyre has been a game-changer. Their AI-powered solutions have increased our efficiency by 300%. Highly recommended!',
+                  rating: 5,
+                  color: 'from-orange-500 to-red-500'
+                },
+                {
+                  id: 4,
+                  name: 'Michael Thompson',
+                  position: 'VP Engineering, StartupHub',
+                  avatar: 'MT',
+                  review: 'The level of support and innovation from DataFyre is unmatched. They helped us modernize our entire tech stack seamlessly.',
+                  rating: 5,
+                  color: 'from-green-500 to-emerald-500'
+                },
+                {
+                  id: 5,
+                  name: 'Lisa Wang',
+                  position: 'Product Manager, InnovateTech',
+                  avatar: 'LW',
+                  review: 'DataFyre\'s products are cutting-edge and user-friendly. They\'ve revolutionized how we manage and analyze our data.',
+                  rating: 5,
+                  color: 'from-indigo-500 to-blue-500'
+                },
+                {
+                  id: 6,
+                  name: 'David Martinez',
+                  position: 'COO, CloudFirst Solutions',
+                  avatar: 'DM',
+                  review: 'Exceptional quality and reliability. DataFyre has become an integral part of our business operations. Couldn\'t be happier!',
+                  rating: 5,
+                  color: 'from-pink-500 to-rose-500'
+                },
+              ].concat([
+                {
+                  id: 7,
+                  name: 'Sarah Mitchell',
+                  position: 'CTO, TechVision Inc.',
+                  avatar: 'SM',
+                  review: 'DataFyre transformed our cloud infrastructure completely. Their solutions are innovative, reliable, and exactly what we needed to scale our operations.',
+                  rating: 5,
+                  color: 'from-blue-500 to-cyan-500'
+                },
+                {
+                  id: 8,
+                  name: 'James Rodriguez',
+                  position: 'CEO, NextGen Solutions',
+                  avatar: 'JR',
+                  review: 'Outstanding service and exceptional results. The team at DataFyre truly understands enterprise needs and delivers beyond expectations.',
+                  rating: 5,
+                  color: 'from-purple-500 to-pink-500'
+                },
+                {
+                  id: 9,
+                  name: 'Emily Chen',
+                  position: 'Director of IT, GlobalCorp',
+                  avatar: 'EC',
+                  review: 'Working with DataFyre has been a game-changer. Their AI-powered solutions have increased our efficiency by 300%. Highly recommended!',
+                  rating: 5,
+                  color: 'from-orange-500 to-red-500'
+                },
+                {
+                  id: 10,
+                  name: 'Michael Thompson',
+                  position: 'VP Engineering, StartupHub',
+                  avatar: 'MT',
+                  review: 'The level of support and innovation from DataFyre is unmatched. They helped us modernize our entire tech stack seamlessly.',
+                  rating: 5,
+                  color: 'from-green-500 to-emerald-500'
+                },
+              ]).map((review) => (
+                <div
+                  key={review.id}
+                  className="flex-shrink-0 w-96 glass-card rounded-2xl p-6 backdrop-blur-xl bg-gray-900/60 border border-white/10 hover:border-primary/30 transition-all duration-300"
+                >
+                  {/* Star Rating */}
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <span key={i} className="text-yellow-400 text-lg">★</span>
+                    ))}
+                  </div>
 
-                  <p className="text-gray-400 mb-4 leading-relaxed line-clamp-3">
-                    {blog.excerpt}
+                  {/* Review Text */}
+                  <p className="text-gray-300 text-base leading-relaxed mb-6">
+                    "{review.review}"
                   </p>
 
-                  {/* Meta Info */}
-                  <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <span>{blog.author}</span>
-                    <span>{blog.readTime}</span>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-primary/20">
-                    <span className="text-sm text-gray-500">{blog.date}</span>
-                    <Link
-                      to="/blogs"
-                      className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
-                    >
-                      Read More
-                      <span>→</span>
-                    </Link>
+                  {/* Author Info */}
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold shadow-lg`}>
+                      {review.avatar}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-semibold text-sm">{review.name}</h4>
+                      <p className="text-gray-400 text-xs">{review.position}</p>
+                    </div>
                   </div>
                 </div>
-              </motion.article>
-          ))}
+              ))}
+            </motion.div>
           </div>
         </div>
 
-        {/* View All Button */}
+        {/* CTA Button */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -453,7 +543,7 @@ const Blogs = () => {
             to="/blogs"
             className="gradient-primary text-white px-10 py-4 rounded-xl font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
-            Explore All Articles
+            Read Our Blog
           </Link>
         </motion.div>
       </div>

@@ -38,25 +38,37 @@ const Products = () => {
     },
   ];
 
-  const getItemVariants = (isRightAligned) => ({
-    hidden: { 
-      opacity: 0, 
-      x: isRightAligned ? 100 : -100,
-      scale: 0.92,
+  // Container animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
     },
+  };
+
+  // Card animation variants
+  const cardVariants = {
+    hidden: (isRightAligned) => ({
+      opacity: 0,
+      x: isRightAligned ? 100 : -100,
+      scale: 0.8,
+    }),
     visible: {
       opacity: 1,
       x: 0,
       scale: 1,
       transition: {
-        type: "spring",
-        stiffness: 150,
+        type: 'spring',
         damping: 20,
-        mass: 0.5,
-        velocity: 8,
+        stiffness: 100,
+        duration: 0.6,
       },
     },
-  });
+  };
 
   return (
     <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
@@ -88,70 +100,124 @@ const Products = () => {
         </motion.div>
 
         {/* Products List */}
-        <div className="space-y-6 max-w-6xl mx-auto px-4" style={{ perspective: "1000px" }}>
+        <motion.div 
+          className="space-y-6 max-w-6xl mx-auto px-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {products.map((product, index) => {
             const isRightAligned = index % 2 === 1;
             return (
               <motion.div
                 key={product.id}
-                variants={getItemVariants(isRightAligned)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3, margin: "0px" }}
+                custom={isRightAligned}
+                variants={cardVariants}
                 whileHover={{ 
                   scale: 1.03,
-                  rotateY: isRightAligned ? -3 : 3,
-                  rotateX: 2,
+                  rotateY: isRightAligned ? -2 : 2,
                   transition: { duration: 0.3 }
                 }}
+                whileTap={{ scale: 0.98 }}
                 className={`group glass-card rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 ${
                   isRightAligned ? 'lg:ml-[35%]' : 'lg:mr-auto'
                 }`}
-                style={{ maxWidth: '65%', transformStyle: "preserve-3d" }}
+                style={{ maxWidth: '65%' }}
               >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 {/* Icon Side */}
-                <div className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center ${
-                  index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
-                }`}>
-                  <div className="text-4xl opacity-90 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                <motion.div 
+                  className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center ${
+                    index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
+                  }`}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
+                  <motion.div 
+                    className="text-4xl opacity-90"
+                    animate={{ 
+                      rotate: [0, -10, 10, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {product.icon}
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
 
                 {/* Content Side */}
                 <div className={`lg:col-span-9 p-4 md:p-5 flex flex-col justify-center ${
                   index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
                 }`}>
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2">{product.title}</h3>
-                  <p className="text-gray-400 mb-2.5 leading-relaxed text-sm">{product.description}</p>
+                  <motion.h3 
+                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {product.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-gray-400 mb-2.5 leading-relaxed text-sm"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    {product.description}
+                  </motion.p>
 
                   {/* Features */}
-                  <div className="flex flex-wrap gap-1.5 mb-2.5">
+                  <motion.div 
+                    className="flex flex-wrap gap-1.5 mb-2.5"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
                     {product.features.map((feature, idx) => (
-                      <span
+                      <motion.span
                         key={idx}
                         className="bg-accent/10 text-accent px-2 py-0.5 rounded-full text-xs font-medium border border-accent/30"
+                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(99, 102, 241, 0.2)' }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.5 + idx * 0.1 }}
                       >
                         {feature}
-                      </span>
+                      </motion.span>
                     ))}
-                  </div>
+                  </motion.div>
 
                   {/* CTA */}
-                  <Link
-                    to="/products"
-                    className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300 text-xs"
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 }}
                   >
-                    Learn More
-                    <span className="text-sm">→</span>
-                  </Link>
+                    <Link
+                      to="/products"
+                      className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300 text-xs"
+                    >
+                      Learn More
+                      <motion.span 
+                        className="text-sm"
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+                      >
+                        →
+                      </motion.span>
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* CTA Button */}
         <motion.div
