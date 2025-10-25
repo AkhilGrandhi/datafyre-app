@@ -112,7 +112,7 @@ const Services = () => {
                 rotateX: 5,
                 transition: { duration: 0.3 }
               }}
-              className="group glass-card rounded-2xl p-8 cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(229,78,208,0.3)] transition-all duration-300"
+              className="group glass-card rounded-2xl p-8 cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Icon */}

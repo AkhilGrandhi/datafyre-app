@@ -86,7 +86,7 @@ const Products = () => {
         </motion.div>
 
         {/* Products List */}
-        <div className="space-y-6 max-w-6xl mx-auto px-4">
+        <div className="space-y-6 max-w-6xl mx-auto px-4" style={{ perspective: "1000px" }}>
           {products.map((product, index) => {
             const isRightAligned = index % 2 === 1;
             return (
@@ -96,17 +96,23 @@ const Products = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
-                className={`glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10 ${
+                whileHover={{ 
+                  scale: 1.03,
+                  rotateY: isRightAligned ? -3 : 3,
+                  rotateX: 2,
+                  transition: { duration: 0.3 }
+                }}
+                className={`group glass-card rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 ${
                   isRightAligned ? 'lg:ml-[35%]' : 'lg:mr-auto'
                 }`}
-                style={{ maxWidth: '65%' }}
+                style={{ maxWidth: '65%', transformStyle: "preserve-3d" }}
               >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 {/* Icon Side */}
                 <div className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center ${
                   index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
                 }`}>
-                  <div className="text-4xl opacity-90">
+                  <div className="text-4xl opacity-90 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     {product.icon}
                   </div>
                 </div>
