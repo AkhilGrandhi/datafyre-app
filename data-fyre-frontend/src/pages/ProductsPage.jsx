@@ -89,7 +89,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="section-padding bg-dark">
+      <section className="section-padding relative">
         <div className="container-custom">
           <div className="space-y-12">
             {products.map((product, index) => (
@@ -99,7 +99,7 @@ const ProductsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-dark-gray rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-primary/20 hover:border-primary/50 transition-all duration-300"
+                className="glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift"
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-${index % 2 === 0 ? '2' : '2'} gap-8`}>
                   <div className={`p-8 md:p-12 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
@@ -115,7 +115,7 @@ const ProductsPage = () => {
                       <ul className="space-y-2">
                         {product.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center text-gray-300">
-                            <span className="text-primary mr-2 text-lg">✓</span>
+                            <span className="text-accent mr-2 text-lg">✓</span>
                             {feature}
                           </li>
                         ))}

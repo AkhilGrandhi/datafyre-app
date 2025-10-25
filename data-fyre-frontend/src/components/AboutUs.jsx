@@ -56,7 +56,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="section-padding bg-darker-gray">
+    <section className="section-padding relative">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -66,7 +66,7 @@ const AboutUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
             About Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
@@ -105,7 +105,7 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-dark-gray rounded-2xl p-8 border border-primary/20"
+            className="glass-card rounded-2xl p-8"
           >
             <div className="text-4xl mb-4">🎯</div>
             <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
@@ -122,7 +122,7 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-dark-gray rounded-2xl p-8 border border-primary/20"
+            className="glass-card rounded-2xl p-8"
           >
             <div className="text-4xl mb-4">🚀</div>
             <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
@@ -152,7 +152,7 @@ const AboutUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-xl hover:bg-dark-gray border border-transparent hover:border-primary/30 transition-all duration-300"
+                className="text-center p-6 rounded-xl glass-card glass-card-hover"
               >
                 <div className="text-5xl mb-4">{value.icon}</div>
                 <h4 className="text-xl font-bold text-white mb-3">{value.title}</h4>

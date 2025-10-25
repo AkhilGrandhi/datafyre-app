@@ -60,7 +60,7 @@ const Products = () => {
   };
 
   return (
-    <section className="section-padding bg-dark">
+    <section className="section-padding relative">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -70,7 +70,7 @@ const Products = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
             Our Products
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
@@ -94,7 +94,7 @@ const Products = () => {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="bg-dark-gray rounded-2xl p-8 hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300"
+              className="glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer"
             >
               {/* Icon */}
               <div className={`w-16 h-16 bg-gradient-to-br ${product.color} rounded-xl flex items-center justify-center text-3xl mb-6 shadow-lg`}>
@@ -110,7 +110,7 @@ const Products = () => {
                 {product.features.map((feature, index) => (
                   <span
                     key={index}
-                    className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium border border-primary/30"
+                    className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium border border-accent/30"
                   >
                     {feature}
                   </span>
@@ -120,7 +120,7 @@ const Products = () => {
               {/* CTA */}
               <Link
                 to="/products"
-                className="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all duration-300"
+                className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300"
               >
                 Learn More
                 <span className="text-xl">→</span>

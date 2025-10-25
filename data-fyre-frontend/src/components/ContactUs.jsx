@@ -47,7 +47,7 @@ const ContactUs = () => {
   ];
 
   return (
-    <section className="section-padding bg-dark">
+    <section className="section-padding relative">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -57,7 +57,7 @@ const ContactUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
             Get In Touch
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
@@ -78,7 +78,7 @@ const ContactUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-dark-gray rounded-2xl p-8 text-center hover-lift border border-primary/20"
+              className="glass-card glass-card-hover rounded-2xl p-8 text-center hover-lift"
             >
               <div className="text-5xl mb-4">{info.icon}</div>
               <h3 className="text-xl font-bold text-white mb-4">{info.title}</h3>
@@ -98,7 +98,7 @@ const ContactUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-dark-gray rounded-2xl p-8 shadow-lg border border-primary/20"
+            className="glass-card rounded-2xl p-8 glow-effect"
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
             
@@ -123,7 +123,7 @@ const ContactUs = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-darker-gray border border-primary/30 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-gray-500"
+                    className="w-full px-4 py-3 glass-card text-white rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all placeholder-gray-500"
                     placeholder="John Doe"
                   />
                 </div>
@@ -139,7 +139,7 @@ const ContactUs = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-darker-gray border border-primary/30 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-gray-500"
+                    className="w-full px-4 py-3 glass-card text-white rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all placeholder-gray-500"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -155,7 +155,7 @@ const ContactUs = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-darker-gray border border-primary/30 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder-gray-500"
+                    className="w-full px-4 py-3 glass-card text-white rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-all placeholder-gray-500"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -192,7 +192,7 @@ const ContactUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-dark-gray rounded-2xl overflow-hidden shadow-lg border border-primary/20"
+            className="glass-card rounded-2xl overflow-hidden glow-effect"
           >
             <div className="h-full min-h-[500px] relative">
               <iframe

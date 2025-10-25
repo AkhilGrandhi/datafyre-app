@@ -150,7 +150,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-dark">
+      <section className="section-padding relative">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -160,7 +160,7 @@ const ServicesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-dark-gray rounded-2xl p-8 hover-lift border border-primary/20 hover:border-primary/50 transition-all duration-300"
+                className="glass-card glass-card-hover rounded-2xl p-8 hover-lift"
               >
                 <div className="text-5xl mb-6">{service.icon}</div>
                 <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
@@ -171,7 +171,7 @@ const ServicesPage = () => {
                   <ul className="space-y-2">
                     {service.offerings.map((offering, idx) => (
                       <li key={idx} className="flex items-start text-gray-300">
-                        <span className="text-primary mr-2 mt-1">→</span>
+                        <span className="text-accent mr-2 mt-1">→</span>
                         <span>{offering}</span>
                       </li>
                     ))}
@@ -191,7 +191,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-darker-gray">
+      <section className="section-padding relative">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

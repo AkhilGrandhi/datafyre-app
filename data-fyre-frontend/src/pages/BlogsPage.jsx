@@ -126,7 +126,7 @@ const BlogsPage = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="section-padding bg-dark">
+      <section className="section-padding relative">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -140,8 +140,8 @@ const BlogsPage = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'gradient-primary text-white shadow-lg'
-                    : 'bg-dark-gray text-gray-300 hover:bg-darker-gray border border-primary/20'
+                    ? 'gradient-primary text-white glow-effect'
+                    : 'glass-card text-gray-300 glass-card-hover'
                 }`}
               >
                 {category}
@@ -157,7 +157,7 @@ const BlogsPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-dark-gray rounded-2xl overflow-hidden hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300 group"
+                className="glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer group"
               >
                 {/* Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl">
@@ -166,11 +166,11 @@ const BlogsPage = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-primary/30">
+                  <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-accent/30">
                     {blog.category}
                   </span>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
                     {blog.title}
                   </h3>
 
@@ -186,7 +186,7 @@ const BlogsPage = () => {
 
                   <div className="flex items-center justify-between pt-4 border-t border-primary/20">
                     <span className="text-sm text-gray-500">{blog.date}</span>
-                    <button className="inline-flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
+                    <button className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
                       Read More
                       <span>→</span>
                     </button>

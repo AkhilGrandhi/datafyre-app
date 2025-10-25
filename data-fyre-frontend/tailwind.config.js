@@ -7,12 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#00ff88',
-        secondary: '#00d9ff',
-        dark: '#000000',
-        'dark-gray': '#0a0a0a',
-        'darker-gray': '#1a1a1a',
-        'light-gray': '#2a2a2a',
+        primary: '#000000',
+        accent: '#e54ed0',
+        secondary: '#9f45b0',
+        tertiary: '#44008b',
+        dark: '#2d2d2d',
+        'dark-base': '#1a1a1a',
+        'glass-dark': 'rgba(45, 45, 45, 0.4)',
+        'glass-light': 'rgba(45, 45, 45, 0.6)',
         light: '#ffffff',
       },
       fontFamily: {

@@ -28,13 +28,13 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/95 backdrop-blur-md border-b border-primary/20 shadow-lg shadow-primary/10 py-4' : 'bg-transparent py-6'
+        isScrolled ? 'glass-header border-b border-primary/20 glow-effect py-4' : 'bg-transparent py-6'
       }`}
     >
       <nav className="container-custom flex items-center justify-between px-4 md:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center border border-accent/30">
             <span className="text-white font-bold text-xl">DF</span>
           </div>
           <span className="font-bold text-xl text-white">
@@ -48,9 +48,9 @@ const Header = () => {
             <li key={link.path}>
               <Link
                 to={link.path}
-                className={`font-medium transition-all duration-300 hover:text-primary ${
+                className={`font-medium transition-all duration-300 hover:text-accent ${
                   isActive(link.path)
-                    ? 'text-primary'
+                    ? 'text-accent'
                     : 'text-gray-300'
                 }`}
               >
@@ -93,7 +93,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-black/95 backdrop-blur-md border-b border-primary/20 shadow-lg overflow-hidden transition-all duration-300 ${
+        className={`md:hidden glass-header border-b border-primary/20 overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -103,8 +103,8 @@ const Header = () => {
               <Link
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block font-medium transition-colors hover:text-primary ${
-                  isActive(link.path) ? 'text-primary' : 'text-gray-300'
+                className={`block font-medium transition-colors hover:text-accent ${
+                  isActive(link.path) ? 'text-accent' : 'text-gray-300'
                 }`}
               >
                 {link.name}

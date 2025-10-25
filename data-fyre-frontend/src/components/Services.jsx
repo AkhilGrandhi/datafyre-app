@@ -70,7 +70,7 @@ const Services = () => {
   };
 
   return (
-    <section className="section-padding bg-darker-gray">
+    <section className="section-padding relative">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -80,7 +80,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
             Our Services
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
@@ -104,7 +104,7 @@ const Services = () => {
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className="group bg-dark-gray rounded-2xl p-8 hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300"
+              className="group glass-card glass-card-hover rounded-2xl p-8 hover-lift cursor-pointer"
             >
               {/* Icon */}
               <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
@@ -119,7 +119,7 @@ const Services = () => {
               <ul className="space-y-2 mb-6">
                 {service.benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center text-gray-300 text-sm">
-                    <span className="text-primary mr-2">✓</span>
+                    <span className="text-accent mr-2">✓</span>
                     {benefit}
                   </li>
                 ))}
@@ -128,7 +128,7 @@ const Services = () => {
               {/* CTA */}
               <Link
                 to="/services"
-                className="inline-flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
+                className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
               >
                 Learn More
                 <span className="text-xl">→</span>

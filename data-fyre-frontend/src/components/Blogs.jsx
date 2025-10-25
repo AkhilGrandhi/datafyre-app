@@ -88,7 +88,7 @@ const Blogs = () => {
   };
 
   return (
-    <section className="section-padding bg-dark">
+    <section className="section-padding relative">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -98,7 +98,7 @@ const Blogs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
             Latest Insights
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
@@ -122,7 +122,7 @@ const Blogs = () => {
             <motion.article
               key={blog.id}
               variants={itemVariants}
-              className="bg-dark-gray rounded-2xl overflow-hidden hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300 group"
+              className="glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer group"
             >
               {/* Image Placeholder */}
               <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl">
@@ -131,11 +131,11 @@ const Blogs = () => {
 
               {/* Content */}
               <div className="p-6">
-                <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                <span className="inline-block bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-semibold mb-3">
                   {blog.category}
                 </span>
 
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
                   {blog.title}
                 </h3>
 
@@ -153,7 +153,7 @@ const Blogs = () => {
                   <span className="text-sm text-gray-500">{blog.date}</span>
                   <Link
                     to="/blogs"
-                    className="inline-flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
+                    className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
                   >
                     Read More
                     <span>→</span>
