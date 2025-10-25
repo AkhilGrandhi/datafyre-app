@@ -13,6 +13,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background: #000000;
+  color: #ffffff;
 }
 
 html {
@@ -21,15 +23,19 @@ html {
 
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #00ff88 0%, #00d9ff 100%);
   }
   
   .gradient-dark {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+  }
+  
+  .gradient-dark-subtle {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #00ff88 0%, #00d9ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -41,7 +47,7 @@ html {
   
   .hover-lift:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
   }
   
   .section-padding {
@@ -51,22 +57,50 @@ html {
   .container-custom {
     @apply max-w-7xl mx-auto;
   }
+  
+  .border-glow {
+    border: 1px solid rgba(0, 255, 136, 0.3);
+  }
+  
+  .border-glow:hover {
+    border: 1px solid rgba(0, 255, 136, 0.6);
+  }
+  
+  .bg-black-card {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+  }
+  
+  .bg-black-card-hover:hover {
+    background: rgba(20, 20, 20, 0.9);
+  }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Black Theme */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6366f1;
+  background: #00ff88;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f46e5;
+  background: #00d9ff;
+}
+
+/* Selection */
+::selection {
+  background: #00ff88;
+  color: #000000;
+}
+
+::-moz-selection {
+  background: #00ff88;
+  color: #000000;
 }

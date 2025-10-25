@@ -56,7 +56,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-darker-gray">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -69,10 +69,10 @@ const AboutUs = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             About Us
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
             Building the Future of Technology
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
             Data Fyre Pvt. Ltd. is a leading IT solutions provider dedicated to 
             empowering businesses through innovative technology. With over 15 years 
             of experience, we've helped hundreds of organizations achieve their 
@@ -93,7 +93,7 @@ const AboutUs = () => {
               <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
                 {stat.number}
               </div>
-              <div className="text-gray-600">{stat.label}</div>
+              <div className="text-gray-400">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -105,11 +105,11 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-light rounded-2xl p-8"
+            className="bg-dark-gray rounded-2xl p-8 border border-primary/20"
           >
             <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-2xl font-bold text-dark mb-4">Our Mission</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+            <p className="text-gray-400 leading-relaxed">
               To empower businesses worldwide with innovative IT solutions that 
               drive growth, efficiency, and competitive advantage. We strive to 
               be the trusted technology partner for organizations seeking digital 
@@ -122,11 +122,11 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-light rounded-2xl p-8"
+            className="bg-dark-gray rounded-2xl p-8 border border-primary/20"
           >
             <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-2xl font-bold text-dark mb-4">Our Vision</h3>
-            <p className="text-gray-600 leading-relaxed">
+            <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
+            <p className="text-gray-400 leading-relaxed">
               To be the global leader in delivering cutting-edge IT solutions 
               that shape the future of business and technology. We envision a 
               world where every organization can harness the full potential of 
@@ -143,7 +143,7 @@ const AboutUs = () => {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <h3 className="text-3xl font-bold text-dark text-center mb-12">Our Values</h3>
+          <h3 className="text-3xl font-bold text-white text-center mb-12">Our Values</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <motion.div
@@ -152,11 +152,11 @@ const AboutUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-xl hover:bg-light transition-colors"
+                className="text-center p-6 rounded-xl hover:bg-dark-gray border border-transparent hover:border-primary/30 transition-all duration-300"
               >
                 <div className="text-5xl mb-4">{value.icon}</div>
-                <h4 className="text-xl font-bold text-dark mb-3">{value.title}</h4>
-                <p className="text-gray-600">{value.description}</p>
+                <h4 className="text-xl font-bold text-white mb-3">{value.title}</h4>
+                <p className="text-gray-400">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -169,8 +169,8 @@ const AboutUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-3xl font-bold text-dark text-center mb-4">Meet Our Leadership</h3>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold text-white text-center mb-4">Meet Our Leadership</h3>
+          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
             Our experienced leadership team brings together decades of expertise 
             in technology, business, and innovation.
           </p>
@@ -187,8 +187,8 @@ const AboutUs = () => {
                 <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
                   {member.image}
                 </div>
-                <h4 className="text-lg font-bold text-dark mb-1">{member.name}</h4>
-                <p className="text-gray-600">{member.role}</p>
+                <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
+                <p className="text-gray-400">{member.role}</p>
               </motion.div>
             ))}
           </div>

@@ -70,7 +70,7 @@ const Services = () => {
   };
 
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-darker-gray">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -83,10 +83,10 @@ const Services = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
             Comprehensive IT Services
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             End-to-end technology services to help you innovate, transform, 
             and achieve your business objectives.
           </p>
@@ -104,7 +104,7 @@ const Services = () => {
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className="group bg-light rounded-2xl p-8 hover-lift cursor-pointer hover:bg-white hover:shadow-xl transition-all duration-300"
+              className="group bg-dark-gray rounded-2xl p-8 hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300"
             >
               {/* Icon */}
               <div className="text-5xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
@@ -112,13 +112,13 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-dark mb-3">{service.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
 
               {/* Benefits */}
               <ul className="space-y-2 mb-6">
                 {service.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center text-gray-700 text-sm">
+                  <li key={index} className="flex items-center text-gray-300 text-sm">
                     <span className="text-primary mr-2">✓</span>
                     {benefit}
                   </li>
@@ -145,7 +145,7 @@ const Services = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-gray-400 text-lg mb-6">
             Ready to transform your business with our services?
           </p>
           <Link

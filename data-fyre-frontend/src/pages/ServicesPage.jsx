@@ -150,7 +150,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-light">
+      <section className="section-padding bg-dark">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -160,17 +160,17 @@ const ServicesPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-white rounded-2xl p-8 hover-lift"
+                className="bg-dark-gray rounded-2xl p-8 hover-lift border border-primary/20 hover:border-primary/50 transition-all duration-300"
               >
                 <div className="text-5xl mb-6">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-dark mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <p className="text-gray-700 mb-6 leading-relaxed">{service.details}</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
+                <p className="text-gray-400 mb-4">{service.description}</p>
+                <p className="text-gray-300 mb-6 leading-relaxed">{service.details}</p>
                 <div className="mb-6">
-                  <h4 className="font-semibold text-dark mb-3">What We Offer:</h4>
+                  <h4 className="font-semibold text-white mb-3">What We Offer:</h4>
                   <ul className="space-y-2">
                     {service.offerings.map((offering, idx) => (
-                      <li key={idx} className="flex items-start text-gray-700">
+                      <li key={idx} className="flex items-start text-gray-300">
                         <span className="text-primary mr-2 mt-1">→</span>
                         <span>{offering}</span>
                       </li>
@@ -191,7 +191,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-darker-gray">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -200,10 +200,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Our Process
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               A proven methodology that ensures successful project delivery every time.
             </p>
           </motion.div>
@@ -221,8 +221,8 @@ const ServicesPage = () => {
                 <div className="w-20 h-20 gradient-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
                   {item.step}
                 </div>
-                <h4 className="text-xl font-bold text-dark mb-2">{item.title}</h4>
-                <p className="text-gray-600">{item.description}</p>
+                <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                <p className="text-gray-400">{item.description}</p>
               </motion.div>
             ))}
           </div>

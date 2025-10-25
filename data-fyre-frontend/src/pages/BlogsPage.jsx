@@ -126,7 +126,7 @@ const BlogsPage = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="section-padding bg-light">
+      <section className="section-padding bg-dark">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -141,7 +141,7 @@ const BlogsPage = () => {
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
                     ? 'gradient-primary text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    : 'bg-dark-gray text-gray-300 hover:bg-darker-gray border border-primary/20'
                 }`}
               >
                 {category}
@@ -157,7 +157,7 @@ const BlogsPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-white rounded-2xl overflow-hidden hover-lift cursor-pointer border border-gray-100 group"
+                className="bg-dark-gray rounded-2xl overflow-hidden hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300 group"
               >
                 {/* Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl">
@@ -166,15 +166,15 @@ const BlogsPage = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                  <span className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-primary/30">
                     {blog.category}
                   </span>
 
-                  <h3 className="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                     {blog.title}
                   </h3>
 
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-gray-400 mb-4 leading-relaxed">
                     {blog.excerpt}
                   </p>
 
@@ -184,7 +184,7 @@ const BlogsPage = () => {
                     <span>{blog.readTime}</span>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center justify-between pt-4 border-t border-primary/20">
                     <span className="text-sm text-gray-500">{blog.date}</span>
                     <button className="inline-flex items-center text-primary font-semibold group-hover:gap-3 gap-2 transition-all duration-300">
                       Read More

@@ -89,7 +89,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Section */}
-      <section className="section-padding bg-light">
+      <section className="section-padding bg-dark">
         <div className="container-custom">
           <div className="space-y-12">
             {products.map((product, index) => (
@@ -99,29 +99,29 @@ const ProductsPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                className="bg-dark-gray rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-primary/20 hover:border-primary/50 transition-all duration-300"
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-${index % 2 === 0 ? '2' : '2'} gap-8`}>
                   <div className={`p-8 md:p-12 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <div className={`w-20 h-20 bg-gradient-to-br ${product.color} rounded-2xl flex items-center justify-center text-4xl mb-6 shadow-lg`}>
                       {product.icon}
                     </div>
-                    <h2 className="text-3xl font-bold text-dark mb-4">{product.title}</h2>
-                    <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                    <h2 className="text-3xl font-bold text-white mb-4">{product.title}</h2>
+                    <p className="text-gray-400 text-lg mb-6 leading-relaxed">
                       {product.longDescription}
                     </p>
                     <div className="mb-6">
-                      <h4 className="font-semibold text-dark mb-3">Key Features:</h4>
+                      <h4 className="font-semibold text-white mb-3">Key Features:</h4>
                       <ul className="space-y-2">
                         {product.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-gray-700">
+                          <li key={idx} className="flex items-center text-gray-300">
                             <span className="text-primary mr-2 text-lg">✓</span>
                             {feature}
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="flex items-center justify-between pt-6 border-t border-gray-200">
+                    <div className="flex items-center justify-between pt-6 border-t border-primary/20">
                       <span className="text-2xl font-bold text-gradient">{product.pricing}</span>
                       <Link
                         to="/contact"

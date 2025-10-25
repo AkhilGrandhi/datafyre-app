@@ -60,7 +60,7 @@ const Products = () => {
   };
 
   return (
-    <section className="section-padding bg-light">
+    <section className="section-padding bg-dark">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -73,10 +73,10 @@ const Products = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Our Products
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
             Innovative Solutions for Modern Business
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Discover our suite of cutting-edge products designed to accelerate 
             your digital transformation journey.
           </p>
@@ -94,7 +94,7 @@ const Products = () => {
             <motion.div
               key={product.id}
               variants={itemVariants}
-              className="bg-white rounded-2xl p-8 hover-lift cursor-pointer border border-gray-100"
+              className="bg-dark-gray rounded-2xl p-8 hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300"
             >
               {/* Icon */}
               <div className={`w-16 h-16 bg-gradient-to-br ${product.color} rounded-xl flex items-center justify-center text-3xl mb-6 shadow-lg`}>
@@ -102,15 +102,15 @@ const Products = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-dark mb-3">{product.title}</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">{product.description}</p>
+              <h3 className="text-2xl font-bold text-white mb-3">{product.title}</h3>
+              <p className="text-gray-400 mb-6 leading-relaxed">{product.description}</p>
 
               {/* Features */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {product.features.map((feature, index) => (
                   <span
                     key={index}
-                    className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium"
+                    className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium border border-primary/30"
                   >
                     {feature}
                   </span>

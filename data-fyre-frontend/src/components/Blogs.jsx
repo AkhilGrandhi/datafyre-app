@@ -88,7 +88,7 @@ const Blogs = () => {
   };
 
   return (
-    <section className="section-padding bg-light">
+    <section className="section-padding bg-dark">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -101,10 +101,10 @@ const Blogs = () => {
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Latest Insights
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
             From Our Blog
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Stay updated with the latest technology trends, insights, and best 
             practices from our team of experts.
           </p>
@@ -122,7 +122,7 @@ const Blogs = () => {
             <motion.article
               key={blog.id}
               variants={itemVariants}
-              className="bg-white rounded-2xl overflow-hidden hover-lift cursor-pointer border border-gray-100 group"
+              className="bg-dark-gray rounded-2xl overflow-hidden hover-lift cursor-pointer border border-primary/20 hover:border-primary/50 transition-all duration-300 group"
             >
               {/* Image Placeholder */}
               <div className="h-48 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl">
@@ -135,11 +135,11 @@ const Blogs = () => {
                   {blog.category}
                 </span>
 
-                <h3 className="text-xl font-bold text-dark mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                   {blog.title}
                 </h3>
 
-                <p className="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                <p className="text-gray-400 mb-4 leading-relaxed line-clamp-3">
                   {blog.excerpt}
                 </p>
 
@@ -149,7 +149,7 @@ const Blogs = () => {
                   <span>{blog.readTime}</span>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                <div className="flex items-center justify-between pt-4 border-t border-primary/20">
                   <span className="text-sm text-gray-500">{blog.date}</span>
                   <Link
                     to="/blogs"
