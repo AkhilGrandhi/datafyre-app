@@ -75,7 +75,7 @@ const Footer = () => {
 
       <div className="relative z-10">
         {/* Main Footer Content */}
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl py-12 md:py-16">
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl py-9 md:py-12">
           {/* Top Section with Logo and Newsletter */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
             {/* Company Info */}
@@ -186,7 +186,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="border-t border-white/10 pt-8"
+            className="border-t border-white/10 pt-6"
           >
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-400 text-sm">
