@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#000000',
-        accent: '#e54ed0',
+        primary: '#e54ed0',
+        accent: '#ffffff',
         secondary: '#9f45b0',
         tertiary: '#44008b',
         dark: '#2d2d2d',
@@ -36,8 +36,8 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 5px #00ff88, 0 0 10px #00ff88' },
-          '100%': { boxShadow: '0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88' },
+          '0%': { boxShadow: '0 0 5px #e54ed0, 0 0 10px #e54ed0' },
+          '100%': { boxShadow: '0 0 10px #e54ed0, 0 0 20px #e54ed0, 0 0 30px #e54ed0' },
         },
       },
     },
