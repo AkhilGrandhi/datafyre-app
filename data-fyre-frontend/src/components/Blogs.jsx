@@ -143,19 +143,19 @@ const Blogs = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}>
+    <section className="py-16 md:py-28 relative overflow-hidden" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-40 right-20 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-secondary/8 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 -right-10 md:right-20 w-64 md:w-96 h-64 md:h-96 bg-primary/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 -left-10 md:left-20 w-64 md:w-80 h-64 md:h-80 bg-secondary/8 rounded-full blur-3xl"></div>
         
         {/* Animated Grid Lines */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 md:px-12 lg:px-16 max-w-7xl relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16 relative">
+        <div className="text-center mb-12 md:mb-16 relative">
           {/* Background Glow */}
           <div className="absolute inset-0 -z-10 flex items-center justify-center">
             <div className="w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -165,7 +165,7 @@ const Blogs = () => {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-accent font-semibold text-sm uppercase tracking-wider inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/5"
+            className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider inline-block px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-accent/30 bg-accent/5"
           >
             Latest Insights
           </motion.span>
@@ -174,7 +174,7 @@ const Blogs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-6 mb-4"
+            className="text-3xl md:text-5xl font-bold text-white mt-4 md:mt-6 mb-3 md:mb-4"
           >
             From Our Blog
           </motion.h2>
@@ -183,7 +183,7 @@ const Blogs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto leading-relaxed px-4"
           >
             Stay updated with the latest technology trends, insights, and best 
             practices from our team of experts.
@@ -191,9 +191,9 @@ const Blogs = () => {
         </div>
 
         {/* Featured Carousel - Stacked Cards */}
-        <div className="mb-12">
+        <div className="mb-20">
           <div 
-            className="relative h-[550px] flex items-center justify-center overflow-visible"
+            className="relative h-[500px] md:h-[550px] flex items-center justify-center overflow-visible"
             onMouseEnter={() => setIsAutoPlay(false)}
             onMouseLeave={() => setIsAutoPlay(true)}
           >
@@ -219,21 +219,21 @@ const Blogs = () => {
                 opacity = 1;
                 zIndex = 30;
                 rotateY = 0;
-                cardHeight = '500px'; // Center card: 100%
+                cardHeight = '500px'; // Center card - ORIGINAL desktop value
               } else if (isLeftOne || isRightOne) {
                 xOffset = isLeftOne ? -100: 100;
                 scale = 1;
                 opacity = 0.6;
                 zIndex = 20;
                 rotateY = isLeftOne ? 12 : -12;
-                cardHeight = '400px'; // Adjacent cards: 80% of center
+                cardHeight = '400px'; // Adjacent cards - ORIGINAL
               } else if (isLeftTwo || isRightTwo) {
                 xOffset = isLeftTwo ? -190 : 190;
                 scale = 1;
                 opacity = 0.3;
                 zIndex = 10;
                 rotateY = isLeftTwo ? 20 : -20;
-                cardHeight = '320px'; // Outer cards: 80% of adjacent
+                cardHeight = '320px'; // Outer cards - ORIGINAL
               }
               
               return (
@@ -252,7 +252,7 @@ const Blogs = () => {
                     stiffness: 260,
                     damping: 26,
                   }}
-                  className="absolute w-full max-w-4xl px-4"
+                  className={`absolute w-full max-w-4xl px-4 ${!isCenter ? 'hidden md:block' : ''}`}
                   style={{ pointerEvents: isCenter ? 'auto' : 'none' }}
                 >
                 <motion.article
@@ -260,9 +260,9 @@ const Blogs = () => {
                   className="rounded-3xl overflow-hidden cursor-pointer group bg-gray-800 border border-gray-700 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
                   style={{ height: cardHeight }}
                 >
-                  <div className="grid md:grid-cols-2 gap-0 h-full">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0 h-full">
                     {/* Image Section */}
-                    <div className="relative h-80 md:h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-8xl overflow-hidden">
+                    <div className="relative h-48 md:h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-6xl md:text-8xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm"></div>
                       <motion.span 
                         className="relative z-10"
@@ -305,12 +305,12 @@ const Blogs = () => {
                     </div>
 
                     {/* Content Section */}
-                    <div className="p-8 md:p-10 flex flex-col justify-center">
+                    <div className="p-5 md:p-10 flex flex-col justify-center">
                       <motion.span 
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-accent/30 w-fit"
+                        className="inline-block bg-accent/10 text-accent px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-3 md:mb-4 border border-accent/30 w-fit"
                       >
                         {blogs[blogIndex].category}
                       </motion.span>
@@ -319,7 +319,7 @@ const Blogs = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-accent transition-colors"
+                        className="text-lg md:text-3xl font-bold text-white mb-3 md:mb-4 group-hover:text-accent transition-colors line-clamp-2"
                       >
                         {blogs[blogIndex].title}
                       </motion.h3>
@@ -328,7 +328,7 @@ const Blogs = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="text-gray-400 mb-6 leading-relaxed text-lg"
+                        className="text-gray-400 mb-4 md:mb-6 leading-relaxed text-sm md:text-lg line-clamp-2 md:line-clamp-none"
                       >
                         {blogs[blogIndex].excerpt}
                       </motion.p>
@@ -338,18 +338,18 @@ const Blogs = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
-                        className="flex items-center justify-between text-sm text-gray-500 mb-6 pb-6 border-b border-primary/20"
+                        className="flex items-center justify-between text-xs md:text-sm text-gray-500 mb-4 md:mb-6 pb-4 md:pb-6 border-b border-primary/20"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold">
+                        <div className="flex items-center gap-2 md:gap-3">
+                          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xs md:text-base font-bold">
                             {blogs[blogIndex].author.charAt(0)}
                           </div>
                           <div>
-                            <p className="text-white font-medium">{blogs[blogIndex].author}</p>
-                            <p className="text-xs text-gray-500">{blogs[blogIndex].date}</p>
+                            <p className="text-white font-medium text-xs md:text-sm">{blogs[blogIndex].author}</p>
+                            <p className="text-[10px] md:text-xs text-gray-500">{blogs[blogIndex].date}</p>
                           </div>
                         </div>
-                        <span className="text-accent font-medium">{blogs[blogIndex].readTime}</span>
+                        <span className="text-accent font-medium text-xs md:text-sm">{blogs[blogIndex].readTime}</span>
                       </motion.div>
 
                       <motion.div
@@ -359,9 +359,9 @@ const Blogs = () => {
                       >
                         <Link
                           to="/blogs"
-                          className="inline-flex items-center gap-2 gradient-primary text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 group/btn"
+                          className="inline-flex items-center gap-2 gradient-primary text-white px-4 py-2 md:px-6 md:py-3 rounded-lg text-sm md:text-base font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 group/btn"
                         >
-                          Read Full Article
+                          Read Article
                           <motion.span
                             animate={{ x: [0, 5, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
@@ -380,18 +380,18 @@ const Blogs = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute -left-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2.5 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute left-2 md:-left-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2 md:p-3 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute -right-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2.5 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute right-2 md:-right-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2 md:p-3 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -414,33 +414,33 @@ const Blogs = () => {
         </div>
 
         {/* Customer Reviews - Infinite Scroll */}
-        <div className="mt-20 overflow-hidden">
+        <div className="mt-16 md:mt-20 overflow-hidden">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-8 md:mb-12 px-4"
           >
-            <span className="text-accent font-semibold text-sm uppercase tracking-wider inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
+            <span className="text-accent font-semibold text-xs md:text-sm uppercase tracking-wider inline-block px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-accent/30 bg-accent/5">
               Testimonials
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-4 mb-3">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mt-3 md:mt-4 mb-2 md:mb-3">
               What Our Clients Say
             </h3>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
               Trusted by industry leaders worldwide
             </p>
           </motion.div>
 
           {/* Scrolling Reviews Container */}
-          <div className="relative">
+          <div className="relative overflow-hidden">
             {/* Gradient Overlays */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
             {/* Infinite Scroll Animation */}
             <motion.div
-              className="flex gap-6"
+              className="flex gap-3 md:gap-6"
               animate={{
                 x: [0, -1920],
               }}
@@ -548,28 +548,28 @@ const Blogs = () => {
               ]).map((review) => (
                 <div
                   key={review.id}
-                  className="flex-shrink-0 w-96 glass-card rounded-2xl p-6 backdrop-blur-xl bg-gray-900/60 border border-white/10 hover:border-primary/30 transition-all duration-300"
+                  className="flex-shrink-0 w-[280px] md:w-96 glass-card rounded-xl md:rounded-2xl p-4 md:p-6 backdrop-blur-xl bg-gray-900/60 border border-white/10 hover:border-primary/30 transition-all duration-300"
                 >
                   {/* Star Rating */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-0.5 md:gap-1 mb-3 md:mb-4">
                     {[...Array(review.rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-400 text-lg">★</span>
+                      <span key={i} className="text-yellow-400 text-base md:text-lg">★</span>
                     ))}
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-gray-300 text-base leading-relaxed mb-6">
+                  <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-4 md:mb-6 line-clamp-3">
                     "{review.review}"
                   </p>
 
                   {/* Author Info */}
-                  <div className="flex items-center gap-3">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold shadow-lg`}>
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white text-sm md:text-base font-bold shadow-lg`}>
                       {review.avatar}
                     </div>
                     <div>
-                      <h4 className="text-white font-semibold text-sm">{review.name}</h4>
-                      <p className="text-gray-400 text-xs">{review.position}</p>
+                      <h4 className="text-white font-semibold text-sm md:text-base">{review.name}</h4>
+                      <p className="text-gray-400 text-xs md:text-sm">{review.position}</p>
                     </div>
                   </div>
                 </div>
@@ -583,11 +583,11 @@ const Blogs = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12 md:mt-16 px-4"
         >
           <Link
             to="/blogs"
-            className="gradient-primary text-white px-10 py-4 rounded-xl font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="gradient-primary text-white px-6 md:px-10 py-3 md:py-4 rounded-lg md:rounded-xl text-sm md:text-base font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Read Our Blog
           </Link>

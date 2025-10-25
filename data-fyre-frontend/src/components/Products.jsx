@@ -44,28 +44,26 @@ const Products = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
         delayChildren: 0.1,
       },
     },
   };
 
-  // Card animation variants
+  // Card animation variants - Smooth fade-in with upward movement
   const cardVariants = {
-    hidden: (isRightAligned) => ({
+    hidden: {
       opacity: 0,
-      x: isRightAligned ? 100 : -100,
-      scale: 0.8,
-    }),
+      y: 40,
+      scale: 0.95,
+    },
     visible: {
       opacity: 1,
-      x: 0,
+      y: 0,
       scale: 1,
       transition: {
-        type: 'spring',
-        damping: 20,
-        stiffness: 100,
-        duration: 0.6,
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94], // Smooth easing curve
       },
     },
   };
@@ -112,14 +110,11 @@ const Products = () => {
             return (
               <motion.div
                 key={product.id}
-                custom={isRightAligned}
                 variants={cardVariants}
                 whileHover={{ 
-                  scale: 1.03,
-                  rotateY: isRightAligned ? -2 : 2,
-                  transition: { duration: 0.3 }
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeOut" }
                 }}
-                whileTap={{ scale: 0.98 }}
                 className={`group glass-card rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 w-full ${
                   isRightAligned ? 'lg:ml-[35%] lg:max-w-[65%]' : 'lg:mr-auto lg:max-w-[65%]'
                 }`}
@@ -130,18 +125,20 @@ const Products = () => {
                   className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-8 sm:p-10 lg:p-4 flex items-center justify-center ${
                     index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
                   }`}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
                   <motion.div 
                     className="text-5xl sm:text-6xl lg:text-4xl opacity-90"
+                    whileHover={{ 
+                      scale: 1.15,
+                      rotate: 5,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
                     animate={{ 
-                      rotate: [0, -10, 10, -10, 0],
+                      y: [0, -5, 0],
                     }}
                     transition={{ 
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
-                      repeatDelay: 3,
                       ease: "easeInOut"
                     }}
                   >
@@ -153,64 +150,37 @@ const Products = () => {
                 <div className={`lg:col-span-9 p-6 sm:p-8 lg:p-5 flex flex-col justify-center ${
                   index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
                 }`}>
-                  <motion.h3 
-                    className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3">
                     {product.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
+                  </h3>
+                  <p className="text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">
                     {product.description}
-                  </motion.p>
+                  </p>
 
                   {/* Features */}
-                  <motion.div 
-                    className="flex flex-wrap gap-2 mb-4"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                  >
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {product.features.map((feature, idx) => (
-                      <motion.span
+                      <span
                         key={idx}
-                        className="bg-accent/10 text-accent px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium border border-accent/30"
-                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(99, 102, 241, 0.2)' }}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.5 + idx * 0.1 }}
+                        className="bg-accent/10 text-accent px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium border border-accent/30 hover:bg-accent/20 transition-colors duration-200"
                       >
                         {feature}
-                      </motion.span>
+                      </span>
                     ))}
-                  </motion.div>
+                  </div>
 
                   {/* CTA */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.6 }}
-                  >
+                  <div>
                     <Link
                       to="/products"
-                      className="inline-flex items-center text-accent text-sm sm:text-base font-semibold hover:gap-3 gap-2 transition-all duration-300"
+                      className="inline-flex items-center text-accent text-sm sm:text-base font-semibold hover:gap-3 gap-2 transition-all duration-300 group"
                     >
                       Learn More
-                      <motion.span 
-                        className="text-sm"
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                      >
+                      <span className="text-sm group-hover:translate-x-1 transition-transform duration-300">
                         →
-                      </motion.span>
+                      </span>
                     </Link>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>
