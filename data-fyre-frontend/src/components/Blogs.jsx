@@ -205,12 +205,13 @@ const Blogs = () => {
               const isRightOne = position === 3;
               const isRightTwo = position === 4;
               
-              // Calculate position offsets
+              // Calculate position offsets and fixed heights
               let xOffset = 0;
               let scale = 1;
               let opacity = 1;
               let zIndex = 30;
               let rotateY = 0;
+              let cardHeight = '500px'; // Default center height
               
               if (isCenter) {
                 xOffset = 0;
@@ -218,30 +219,21 @@ const Blogs = () => {
                 opacity = 1;
                 zIndex = 30;
                 rotateY = 0;
-              } else if (isLeftOne) {
-                xOffset = -150;
-                scale = 0.85;
+                cardHeight = '500px'; // Center card: 100%
+              } else if (isLeftOne || isRightOne) {
+                xOffset = isLeftOne ? -100: 100;
+                scale = 1;
                 opacity = 0.6;
                 zIndex = 20;
-                rotateY = 12;
-              } else if (isLeftTwo) {
-                xOffset = -275;
-                scale = 0.7;
+                rotateY = isLeftOne ? 12 : -12;
+                cardHeight = '400px'; // Adjacent cards: 80% of center
+              } else if (isLeftTwo || isRightTwo) {
+                xOffset = isLeftTwo ? -190 : 190;
+                scale = 1;
                 opacity = 0.3;
                 zIndex = 10;
-                rotateY = 20;
-              } else if (isRightOne) {
-                xOffset = 150;
-                scale = 0.85;
-                opacity = 0.6;
-                zIndex = 20;
-                rotateY = -12;
-              } else if (isRightTwo) {
-                xOffset = 275;
-                scale = 0.7;
-                opacity = 0.3;
-                zIndex = 10;
-                rotateY = -20;
+                rotateY = isLeftTwo ? 20 : -20;
+                cardHeight = '320px'; // Outer cards: 80% of adjacent
               }
               
               return (
@@ -265,9 +257,10 @@ const Blogs = () => {
                 >
                 <motion.article
                   whileHover={{ scale: 1.02, y: -10 }}
-                  className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/99 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
+                  className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/95 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
+                  style={{ height: cardHeight }}
                 >
-                  <div className="grid md:grid-cols-2 gap-0">
+                  <div className="grid md:grid-cols-2 gap-0 h-full">
                     {/* Image Section */}
                     <div className="relative h-80 md:h-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-8xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 backdrop-blur-sm"></div>
