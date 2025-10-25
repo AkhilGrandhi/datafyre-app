@@ -225,7 +225,7 @@ const Blogs = () => {
                 zIndex = 20;
                 rotateY = 12;
               } else if (isLeftTwo) {
-                xOffset = -300;
+                xOffset = -275;
                 scale = 0.7;
                 opacity = 0.3;
                 zIndex = 10;
@@ -237,7 +237,7 @@ const Blogs = () => {
                 zIndex = 20;
                 rotateY = -12;
               } else if (isRightTwo) {
-                xOffset = 300;
+                xOffset = 275;
                 scale = 0.7;
                 opacity = 0.3;
                 zIndex = 10;
@@ -265,7 +265,7 @@ const Blogs = () => {
                 >
                 <motion.article
                   whileHover={{ scale: 1.02, y: -10 }}
-                  className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/60 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
+                  className="glass-card rounded-3xl overflow-hidden cursor-pointer group backdrop-blur-xl bg-gray-900/99 border border-white/20 hover:border-primary/50 transition-all duration-300 shadow-2xl hover:shadow-primary/30"
                 >
                   <div className="grid md:grid-cols-2 gap-0">
                     {/* Image Section */}
@@ -387,18 +387,18 @@ const Blogs = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute -left-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2.5 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             
             <button
               onClick={nextSlide}
-              className="absolute right-4 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-4 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
+              className="absolute -right-20 z-50 bg-gray-900/80 hover:bg-gray-800 text-white p-2.5 rounded-full border border-white/10 hover:border-primary/50 transition-all duration-300 backdrop-blur-xl hover:scale-110"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
