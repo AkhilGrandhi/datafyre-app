@@ -38,32 +38,20 @@ const Products = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
+  const getItemVariants = (isRightAligned) => ({
     hidden: { 
       opacity: 0, 
-      y: 60,
-      scale: 0.95,
+      x: isRightAligned ? 200 : -200, // Right cards come from right, left cards from left
     },
     visible: {
       opacity: 1,
-      y: 0,
-      scale: 1,
+      x: 0,
       transition: {
-        duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94], // Custom easing for smooth effect
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
-  };
+  });
 
   return (
     <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
@@ -95,28 +83,35 @@ const Products = () => {
         </motion.div>
 
         {/* Products List */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="space-y-6 max-w-4xl mx-auto"
-        >
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              variants={itemVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              className={`glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10 ${
-                index % 2 === 1 ? 'lg:ml-[30%]' : 'lg:mr-auto'
-              }`}
-              style={{ maxWidth: '70%' }}
-            >
+        <div className="space-y-6 max-w-6xl mx-auto px-4">
+          {products.map((product, index) => {
+            const isRightAligned = index % 2 === 1;
+            return (
+              <motion.div
+                key={product.id}
+                variants={getItemVariants(isRightAligned)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                className={`glass-card glass-card-hover rounded-2xl overflow-hidden hover-lift cursor-pointer backdrop-blur-xl bg-gray-900/40 border border-white/10 ${
+                  isRightAligned ? 'lg:ml-[35%]' : 'lg:mr-auto'
+                }`}
+                style={{ maxWidth: '65%' }}
+              >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                {/* Icon Side */}
+                <div className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center ${
+                  index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
+                }`}>
+                  <div className="text-4xl opacity-90">
+                    {product.icon}
+                  </div>
+                </div>
+
                 {/* Content Side */}
-                <div className="lg:col-span-9 p-4 md:p-5 flex flex-col justify-center">
+                <div className={`lg:col-span-9 p-4 md:p-5 flex flex-col justify-center ${
+                  index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
+                }`}>
                   <h3 className="text-lg md:text-xl font-bold text-white mb-2">{product.title}</h3>
                   <p className="text-gray-400 mb-2.5 leading-relaxed text-sm">{product.description}</p>
 
@@ -141,17 +136,11 @@ const Products = () => {
                     <span className="text-sm">→</span>
                   </Link>
                 </div>
-
-                {/* Icon Side */}
-                <div className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center`}>
-                  <div className="text-4xl opacity-90">
-                    {product.icon}
-                  </div>
-                </div>
               </div>
             </motion.div>
-          ))}
-        </motion.div>
+            );
+          })}
+        </div>
 
         {/* CTA Button */}
         <motion.div
