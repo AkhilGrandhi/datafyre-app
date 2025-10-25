@@ -51,8 +51,8 @@ const Services = () => {
   const getCardVariants = (index) => ({
     hidden: { 
       opacity: 0, 
-      y: 80,
-      scale: 0.9,
+      y: 60,
+      scale: 0.92,
     },
     visible: {
       opacity: 1,
@@ -60,20 +60,21 @@ const Services = () => {
       scale: 1,
       transition: {
         type: "spring",
-        stiffness: 50,
-        damping: 18,
-        mass: 1,
-        delay: (index % 3) * 0.15, // Stagger based on column position
+        stiffness: 70,
+        damping: 16,
+        mass: 0.8,
+        velocity: 2,
+        delay: (index % 3) * 0.12, // Faster stagger
       },
     },
   });
 
   return (
-    <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
+    <section className="py-20 md:py-28 relative" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-40 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-secondary/8 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
@@ -83,15 +84,20 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 relative"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          {/* Background Glow */}
+          <div className="absolute inset-0 -z-10 flex items-center justify-center">
+            <div className="w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+          </div>
+          
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-6 mb-4">
             Comprehensive IT Services
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             End-to-end technology services to help you innovate, transform, 
             and achieve your business objectives.
           </p>
@@ -105,7 +111,7 @@ const Services = () => {
               variants={getCardVariants(index)}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.2, margin: "-50px" }}
               whileHover={{ 
                 scale: 1.05,
                 rotateY: 5,

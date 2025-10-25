@@ -22,6 +22,18 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Smooth scrolling with custom easing */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer utilities {
@@ -67,12 +79,18 @@ html {
   }
   
   .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
   }
   
   .hover-lift:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(229, 78, 208, 0.15);
+  }
+  
+  /* Performance optimization for animations */
+  .glass-card {
+    will-change: transform, opacity;
   }
   
   .section-padding {

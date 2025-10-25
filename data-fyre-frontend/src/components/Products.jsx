@@ -41,17 +41,19 @@ const Products = () => {
   const getItemVariants = (isRightAligned) => ({
     hidden: { 
       opacity: 0, 
-      x: isRightAligned ? 200 : -200, // Right cards come from right, left cards from left
+      x: isRightAligned ? 100 : -100,
+      scale: 0.92,
     },
     visible: {
       opacity: 1,
       x: 0,
+      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 60,
+        stiffness: 150,
         damping: 20,
-        mass: 1,
-        duration: 1,
+        mass: 0.5,
+        velocity: 8,
       },
     },
   });
@@ -95,7 +97,7 @@ const Products = () => {
                 variants={getItemVariants(isRightAligned)}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3, margin: "0px" }}
                 whileHover={{ 
                   scale: 1.03,
                   rotateY: isRightAligned ? -3 : 3,
