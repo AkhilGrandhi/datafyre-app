@@ -70,41 +70,41 @@ const Services = () => {
   });
 
   return (
-    <section className="py-20 md:py-28 relative" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}>
+    <section className="py-16 sm:py-20 md:py-28 relative" style={{ background: 'linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)' }}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-secondary/8 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 -left-10 sm:left-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 -right-10 sm:right-10 w-64 sm:w-80 h-64 sm:h-80 bg-secondary/8 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-12 sm:mb-16 relative"
         >
           {/* Background Glow */}
           <div className="absolute inset-0 -z-10 flex items-center justify-center">
-            <div className="w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div className="w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
           </div>
           
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/5">
+          <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-accent/30 bg-accent/5">
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-6 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 sm:mt-6 mb-3 sm:mb-4 px-4">
             Comprehensive IT Services
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4">
             End-to-end technology services to help you innovate, transform, 
             and achieve your business objectives.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: "1000px" }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" style={{ perspective: "1000px" }}>
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -118,23 +118,23 @@ const Services = () => {
                 rotateX: 5,
                 transition: { duration: 0.3 }
               }}
-              className="group glass-card rounded-2xl p-8 cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300"
+              className="group glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Icon */}
-              <div className="text-5xl mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+              <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                 {service.icon}
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{service.title}</h3>
+              <p className="text-gray-400 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed">{service.description}</p>
 
               {/* Benefits */}
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                 {service.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-center text-gray-300 text-sm">
-                    <span className="text-accent mr-2">✓</span>
+                  <li key={index} className="flex items-center text-gray-300 text-xs sm:text-sm">
+                    <span className="text-accent mr-2 text-sm sm:text-base">✓</span>
                     {benefit}
                   </li>
                 ))}
@@ -143,10 +143,10 @@ const Services = () => {
               {/* CTA */}
               <Link
                 to="/services"
-                className="inline-flex items-center text-accent font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
+                className="inline-flex items-center text-accent text-sm sm:text-base font-semibold group-hover:gap-3 gap-2 transition-all duration-300"
               >
                 Learn More
-                <span className="text-xl">→</span>
+                <span className="text-lg sm:text-xl">→</span>
               </Link>
             </motion.div>
           ))}
@@ -158,14 +158,14 @@ const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16"
+          className="text-center mt-12 sm:mt-16 px-4"
         >
-          <p className="text-gray-400 text-lg mb-6">
+          <p className="text-gray-400 text-base sm:text-lg mb-4 sm:mb-6">
             Ready to transform your business with our services?
           </p>
           <Link
             to="/contact"
-            className="gradient-primary text-white px-8 py-4 rounded-lg font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="gradient-primary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base font-semibold inline-block hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Get a Free Consultation
           </Link>

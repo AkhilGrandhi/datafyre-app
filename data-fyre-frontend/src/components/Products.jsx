@@ -71,29 +71,29 @@ const Products = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
+    <section className="py-16 sm:py-20 md:py-28 relative bg-gradient-to-b from-black via-gray-900/50 to-black">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 -left-10 sm:left-10 w-64 sm:w-72 h-64 sm:h-72 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 -right-10 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-secondary/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
             Our Products
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3 sm:mb-4">
             Innovative Solutions for Modern Business
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
             Discover our suite of cutting-edge products designed to accelerate 
             your digital transformation journey.
           </p>
@@ -101,7 +101,7 @@ const Products = () => {
 
         {/* Products List */}
         <motion.div 
-          className="space-y-6 max-w-6xl mx-auto px-4"
+          className="space-y-4 sm:space-y-6 max-w-6xl mx-auto px-0 sm:px-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -120,22 +120,21 @@ const Products = () => {
                   transition: { duration: 0.3 }
                 }}
                 whileTap={{ scale: 0.98 }}
-                className={`group glass-card rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 ${
-                  isRightAligned ? 'lg:ml-[35%]' : 'lg:mr-auto'
+                className={`group glass-card rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer backdrop-blur-xl bg-gray-900/40 hover:bg-gray-800/50 border border-white/10 hover:border-primary/50 transition-all duration-300 w-full ${
+                  isRightAligned ? 'lg:ml-[35%] lg:max-w-[65%]' : 'lg:mr-auto lg:max-w-[65%]'
                 }`}
-                style={{ maxWidth: '65%' }}
               >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
                 {/* Icon Side */}
                 <motion.div 
-                  className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-4 flex items-center justify-center ${
+                  className={`lg:col-span-3 bg-gradient-to-br ${product.color} p-8 sm:p-10 lg:p-4 flex items-center justify-center ${
                     index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'
                   }`}
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
                   <motion.div 
-                    className="text-4xl opacity-90"
+                    className="text-5xl sm:text-6xl lg:text-4xl opacity-90"
                     animate={{ 
                       rotate: [0, -10, 10, -10, 0],
                     }}
@@ -151,11 +150,11 @@ const Products = () => {
                 </motion.div>
 
                 {/* Content Side */}
-                <div className={`lg:col-span-9 p-4 md:p-5 flex flex-col justify-center ${
+                <div className={`lg:col-span-9 p-6 sm:p-8 lg:p-5 flex flex-col justify-center ${
                   index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'
                 }`}>
                   <motion.h3 
-                    className="text-lg md:text-xl font-bold text-white mb-2"
+                    className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -163,7 +162,7 @@ const Products = () => {
                     {product.title}
                   </motion.h3>
                   <motion.p 
-                    className="text-gray-400 mb-2.5 leading-relaxed text-sm"
+                    className="text-gray-400 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
@@ -173,7 +172,7 @@ const Products = () => {
 
                   {/* Features */}
                   <motion.div 
-                    className="flex flex-wrap gap-1.5 mb-2.5"
+                    className="flex flex-wrap gap-2 mb-4"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
@@ -181,7 +180,7 @@ const Products = () => {
                     {product.features.map((feature, idx) => (
                       <motion.span
                         key={idx}
-                        className="bg-accent/10 text-accent px-2 py-0.5 rounded-full text-xs font-medium border border-accent/30"
+                        className="bg-accent/10 text-accent px-2.5 py-1 rounded-full text-xs sm:text-sm font-medium border border-accent/30"
                         whileHover={{ scale: 1.1, backgroundColor: 'rgba(99, 102, 241, 0.2)' }}
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -200,7 +199,7 @@ const Products = () => {
                   >
                     <Link
                       to="/products"
-                      className="inline-flex items-center text-accent font-semibold hover:gap-3 gap-2 transition-all duration-300 text-xs"
+                      className="inline-flex items-center text-accent text-sm sm:text-base font-semibold hover:gap-3 gap-2 transition-all duration-300"
                     >
                       Learn More
                       <motion.span 

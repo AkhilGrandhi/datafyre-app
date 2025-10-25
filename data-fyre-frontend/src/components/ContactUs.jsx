@@ -47,29 +47,29 @@ const ContactUs = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+    <section className="py-16 sm:py-20 md:py-28 relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-7xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
             Get In Touch
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3 sm:mb-4">
             Let's Start a Conversation
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
             Have a project in mind? We'd love to hear from you. Send us a message 
             and we'll respond as soon as possible.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {/* Contact Info Cards */}
           {contactInfo.map((info, index) => (
             <motion.div
@@ -78,12 +78,12 @@ const ContactUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-card glass-card-hover rounded-2xl p-8 text-center hover-lift"
+              className="glass-card glass-card-hover rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover-lift"
             >
-              <div className="text-5xl mb-4">{info.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-4">{info.title}</h3>
+              <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{info.icon}</div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{info.title}</h3>
               {info.details.map((detail, idx) => (
-                <p key={idx} className="text-gray-400">
+                <p key={idx} className="text-gray-400 text-sm sm:text-base">
                   {detail}
                 </p>
               ))}
@@ -91,16 +91,16 @@ const ContactUs = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl p-8 glow-effect"
+            className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8 glow-effect"
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Send us a Message</h3>
             
             {isSubmitted ? (
               <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
@@ -192,9 +192,9 @@ const ContactUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl overflow-hidden glow-effect"
+            className="glass-card rounded-xl sm:rounded-2xl overflow-hidden glow-effect"
           >
-            <div className="h-full min-h-[500px] relative">
+            <div className="h-full min-h-[400px] sm:min-h-[500px] relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.9897438022!2d-122.48334994757733!3d37.75765499697152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1635000000000!5m2!1sen!2s"
                 width="100%"

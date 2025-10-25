@@ -56,23 +56,23 @@ const AboutUs = () => {
   ];
 
   return (
-    <section className="py-20 md:py-28 relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+    <section className="py-16 sm:py-20 md:py-28 relative">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-7xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <span className="text-accent font-semibold text-sm uppercase tracking-wider">
+          <span className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
             About Us
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 mb-3 sm:mb-4">
             Building the Future of Technology
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             Data Fyre Pvt. Ltd. is a leading IT solutions provider dedicated to 
             empowering businesses through innovative technology. With over 15 years 
             of experience, we've helped hundreds of organizations achieve their 
@@ -86,30 +86,30 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20"
         >
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gradient mb-2">
                 {stat.number}
               </div>
-              <div className="text-gray-400">{stat.label}</div>
+              <div className="text-gray-400 text-sm sm:text-base">{stat.label}</div>
             </div>
           ))}
         </motion.div>
 
         {/* Mission & Vision */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-16 sm:mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl p-8"
+            className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8"
           >
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
-            <p className="text-gray-400 leading-relaxed">
+            <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">🎯</div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Our Mission</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
               To empower businesses worldwide with innovative IT solutions that 
               drive growth, efficiency, and competitive advantage. We strive to 
               be the trusted technology partner for organizations seeking digital 
@@ -122,11 +122,11 @@ const AboutUs = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl p-8"
+            className="glass-card rounded-xl sm:rounded-2xl p-6 sm:p-8"
           >
-            <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-            <p className="text-gray-400 leading-relaxed">
+            <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">🚀</div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Our Vision</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
               To be the global leader in delivering cutting-edge IT solutions 
               that shape the future of business and technology. We envision a 
               world where every organization can harness the full potential of 
@@ -141,10 +141,10 @@ const AboutUs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-20"
+          className="mb-16 sm:mb-20"
         >
-          <h3 className="text-3xl font-bold text-white text-center mb-12">Our Values</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-8 sm:mb-12 px-4">Our Values</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -152,11 +152,11 @@ const AboutUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 rounded-xl glass-card glass-card-hover"
+                className="text-center p-5 sm:p-6 rounded-xl glass-card glass-card-hover"
               >
-                <div className="text-5xl mb-4">{value.icon}</div>
-                <h4 className="text-xl font-bold text-white mb-3">{value.title}</h4>
-                <p className="text-gray-400">{value.description}</p>
+                <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">{value.icon}</div>
+                <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{value.title}</h4>
+                <p className="text-gray-400 text-sm sm:text-base">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -169,12 +169,12 @@ const AboutUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-3xl font-bold text-white text-center mb-4">Meet Our Leadership</h3>
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3 sm:mb-4 px-4">Meet Our Leadership</h3>
+          <p className="text-gray-400 text-sm sm:text-base text-center mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
             Our experienced leadership team brings together decades of expertise 
             in technology, business, and innovation.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {team.map((member, index) => (
               <motion.div
                 key={index}
@@ -184,11 +184,11 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center group"
               >
-                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-6xl group-hover:scale-110 transition-transform duration-300">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-4xl sm:text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
                   {member.image}
                 </div>
-                <h4 className="text-lg font-bold text-white mb-1">{member.name}</h4>
-                <p className="text-gray-400">{member.role}</p>
+                <h4 className="text-base sm:text-lg font-bold text-white mb-1">{member.name}</h4>
+                <p className="text-gray-400 text-xs sm:text-sm md:text-base">{member.role}</p>
               </motion.div>
             ))}
           </div>
