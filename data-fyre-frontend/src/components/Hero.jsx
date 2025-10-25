@@ -12,13 +12,13 @@ const Hero = () => {
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover blur-lg"
       >
         <source src={bgVideo} type="video/mp4" />
       </video>
 
       {/* Semi-transparent Black Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/85"></div>
 
       <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -87,9 +87,9 @@ const Hero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="hidden lg:flex items-center justify-center"
+            className="hidden lg:flex items-center justify-end"
           >
-            <div className="relative w-full max-w-sm">
+            <div className="relative w-full max-w-sm ml-16">
               {/* Minimalist geometric design */}
               <div className="relative">
                 <div className="grid grid-cols-3 gap-2.5">
